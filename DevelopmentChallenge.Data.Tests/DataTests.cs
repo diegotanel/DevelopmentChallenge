@@ -23,6 +23,13 @@ namespace DevelopmentChallenge.Data.Tests
         }
 
         [TestCase]
+        public void TestResumenListaVaciaFormasEnItaliano()
+        {
+            Assert.AreEqual("<h1>Elenco vuoto di forme!</h1>",
+                FormaGeometrica.Imprimir(new List<FormaGeometrica>(), 3));
+        }
+
+        [TestCase]
         public void TestResumenListaConUnCuadrado()
         {
             var cuadrados = new List<FormaGeometrica> {new FormaGeometrica(FormaGeometrica.Cuadrado, 5)};

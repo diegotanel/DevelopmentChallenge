@@ -11,6 +11,7 @@
  * Una vez finalizado, hay que subir el código a un repo GIT y ofrecernos la URL para que podamos utilizar la nueva versión :).
  */
 
+using Microsoft.SqlServer.Server;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,6 +34,7 @@ namespace DevelopmentChallenge.Data.Classes
 
         public const int Castellano = 1;
         public const int Ingles = 2;
+        public const int Italiano = 3;
 
         #endregion
 
@@ -54,8 +56,10 @@ namespace DevelopmentChallenge.Data.Classes
             {
                 if (idioma == Castellano)
                     sb.Append("<h1>Lista vacía de formas!</h1>");
-                else
+                if (idioma == Ingles)
                     sb.Append("<h1>Empty list of shapes!</h1>");
+                if (idioma == Italiano)
+                    sb.Append("<h1>Elenco vuoto di forme!</h1>");
             }
             else
             {
