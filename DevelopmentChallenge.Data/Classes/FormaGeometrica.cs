@@ -15,6 +15,7 @@ using Microsoft.SqlServer.Server;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace DevelopmentChallenge.Data.Classes
@@ -22,7 +23,6 @@ namespace DevelopmentChallenge.Data.Classes
     public class FormaGeometrica
     {
         #region Formas
-
         public const int Cuadrado = 1;
         public const int TrianguloEquilatero = 2;
         public const int Circulo = 3;
@@ -154,9 +154,9 @@ namespace DevelopmentChallenge.Data.Classes
         {
             switch (Tipo)
             {
-                case Cuadrado: return _lado * _lado;
-                case Circulo: return (decimal)Math.PI * (_lado / 2) * (_lado / 2);
-                case TrianguloEquilatero: return ((decimal)Math.Sqrt(3) / 4) * _lado * _lado;
+                case Cuadrado: return new Cuadrado(_lado).CalcularArea();
+                case Circulo: return new Circulo(_lado).CalcularArea();
+                case TrianguloEquilatero: return new TrianguloEquilatero(_lado).CalcularArea();
                 default:
                     throw new ArgumentOutOfRangeException(@"Forma desconocida");
             }
@@ -166,9 +166,9 @@ namespace DevelopmentChallenge.Data.Classes
         {
             switch (Tipo)
             {
-                case Cuadrado: return _lado * 4;
-                case Circulo: return (decimal)Math.PI * _lado;
-                case TrianguloEquilatero: return _lado * 3;
+                case Cuadrado: return new Cuadrado(_lado).CalcularPerimetro();
+                case Circulo: return new Circulo(_lado).CalcularPerimetro();
+                case TrianguloEquilatero: return new TrianguloEquilatero(_lado).CalcularPerimetro();
                 default:
                     throw new ArgumentOutOfRangeException(@"Forma desconocida");
             }

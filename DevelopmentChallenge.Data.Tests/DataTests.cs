@@ -8,6 +8,41 @@ namespace DevelopmentChallenge.Data.Tests
     [TestFixture]
     public class DataTests
     {
+
+        [TestCase]
+        public void TestCalcularAreaConUnCuadrado()      
+        {
+            Assert.AreEqual(25m, new Cuadrado(5).CalcularArea());
+        }
+        [TestCase]
+        public void TestCalcularPerimetroConUnCuadrado()
+        {
+            Assert.AreEqual(20m, new Cuadrado(5).CalcularPerimetro());
+        }
+
+        [TestCase]
+        public void TestCalcularAreaConUnCirculo()
+        {
+            Assert.AreEqual(3.14159265358979m, new Circulo(2).CalcularArea());
+        }
+
+        [TestCase]
+        public void TestCalcularPerimetroConUnCirculo()
+        {
+            Assert.AreEqual(6.28318530717958m, new Circulo(2).CalcularPerimetro());
+        }
+
+        [TestCase]
+        public void TestCalcularAreaConUnTrianguloEquilatero()
+        {
+            Assert.AreEqual(10.8253175473055m, new TrianguloEquilatero(5).CalcularArea());
+        }
+        [TestCase]
+        public void TestCalcularPerimetroConUnTrianguloEquilatero()
+        {
+            Assert.AreEqual(15m, new TrianguloEquilatero(5).CalcularPerimetro());
+        }
+
         [TestCase]
         public void TestResumenListaVacia()
         {
