@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DevelopmentChallenge.Data.Classes
 {
-    public class TrianguloEquilatero : InterfaceFormaGeometrica
+    public class TrianguloEquilatero : IFormaGeometrica
     {
 
         private readonly decimal _lado;

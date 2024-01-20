@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace DevelopmentChallenge.Data.Classes
 {
-    public interface InterfaceFormaGeometrica
+    public interface IReporte
     {
-        decimal CalcularArea();
-        decimal CalcularPerimetro();
+        string ListaVacia { get; }
+        string Encabezado { get; }
+        string Area { get; }
+        string Perimetro { get; }
     }
 }

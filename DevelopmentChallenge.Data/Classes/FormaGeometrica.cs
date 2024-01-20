@@ -50,6 +50,7 @@ namespace DevelopmentChallenge.Data.Classes
 
         public static string Imprimir(List<FormaGeometrica> formas, int idioma)
         {
+
             var sb = new StringBuilder();
 
             if (!formas.Any())
@@ -67,9 +68,11 @@ namespace DevelopmentChallenge.Data.Classes
                 // HEADER
                 if (idioma == Castellano)
                     sb.Append("<h1>Reporte de Formas</h1>");
-                else
+                if (idioma == Ingles)
                     // default es inglés
                     sb.Append("<h1>Shapes report</h1>");
+                if (idioma == Italiano)
+                    sb.Append("<h1>Rapporto sui moduli</h1>");
 
                 var numeroCuadrados = 0;
                 var numeroCirculos = 0;

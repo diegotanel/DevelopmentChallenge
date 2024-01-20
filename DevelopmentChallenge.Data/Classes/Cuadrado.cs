@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DevelopmentChallenge.Data.Classes
 {
-    public class Cuadrado : InterfaceFormaGeometrica
+    public class Cuadrado : IFormaGeometrica
     {
         private readonly decimal _lado;
         public Cuadrado(decimal lado)

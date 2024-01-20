@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
+using System.Resources;
 using DevelopmentChallenge.Data.Classes;
 using NUnit.Framework;
 
@@ -10,10 +13,11 @@ namespace DevelopmentChallenge.Data.Tests
     {
 
         [TestCase]
-        public void TestCalcularAreaConUnCuadrado()      
+        public void TestCalcularAreaConUnCuadrado()
         {
             Assert.AreEqual(25m, new Cuadrado(5).CalcularArea());
         }
+
         [TestCase]
         public void TestCalcularPerimetroConUnCuadrado()
         {
@@ -67,12 +71,32 @@ namespace DevelopmentChallenge.Data.Tests
         [TestCase]
         public void TestResumenListaConUnCuadrado()
         {
-            var cuadrados = new List<FormaGeometrica> {new FormaGeometrica(FormaGeometrica.Cuadrado, 5)};
+            var cuadrados = new List<FormaGeometrica> { new FormaGeometrica(FormaGeometrica.Cuadrado, 5) };
 
             var resumen = FormaGeometrica.Imprimir(cuadrados, FormaGeometrica.Castellano);
 
             Assert.AreEqual("<h1>Reporte de Formas</h1>1 Cuadrado | Area 25 | Perimetro 20 <br/>TOTAL:<br/>1 formas Perimetro 20 Area 25", resumen);
         }
+
+        [TestCase]
+        public void TestResumenListaConUnCuadradoEnIngles()
+        {
+            var cuadrados = new List<FormaGeometrica> { new FormaGeometrica(FormaGeometrica.Cuadrado, 5) };
+
+            var resumen = FormaGeometrica.Imprimir(cuadrados, FormaGeometrica.Ingles);
+
+            Assert.AreEqual("<h1>Shapes report</h1>1 Square | Area 25 | Perimeter 20 <br/>TOTAL:<br/>1 shapes Perimeter 20 Area 25", resumen);
+        }
+
+        //[TestCase]
+        //public void TestResumenListaConUnCuadradoEnItaliano()
+        //{
+        //    var cuadrados = new List<FormaGeometrica> { new FormaGeometrica(FormaGeometrica.Cuadrado, 5) };
+
+        //    var resumen = FormaGeometrica.Imprimir(cuadrados, FormaGeometrica.Italiano);
+
+        //    Assert.AreEqual("<h1>Rapporto sui moduli</h1>1 Piazza | La zona 25 | Perimetro 20 <br/>TOTAL:<br/>1 perimetro delle forme 20 La zona 25", resumen);
+        //}
 
         [TestCase]
         public void TestResumenListaConMasCuadrados()
@@ -129,6 +153,14 @@ namespace DevelopmentChallenge.Data.Tests
             Assert.AreEqual(
                 "<h1>Reporte de Formas</h1>2 Cuadrados | Area 29 | Perimetro 28 <br/>2 Círculos | Area 13,01 | Perimetro 18,06 <br/>3 Triángulos | Area 49,64 | Perimetro 51,6 <br/>TOTAL:<br/>7 formas Perimetro 97,66 Area 91,65",
                 resumen);
+        }
+
+        [TestCase]
+        public void TestObtenerNombreDeFormaEnIngles()
+        {
+            Reporte rep = new Reporte("Ingles");
+            Assert.AreEqual("Circle", rep.Formas("Circulo"));
+
         }
     }
 }
