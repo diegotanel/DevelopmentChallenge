@@ -14,6 +14,10 @@ namespace DevelopmentChallenge.Data.Classes
         {
             _lado = lado;
         }
+
+        public string Nombre { get => "Circulo"; }
+        public string NombrePlural { get => "Circulos"; }
+
         public decimal CalcularArea()
         {
             return (decimal)Math.PI * (_lado / 2) * (_lado / 2);

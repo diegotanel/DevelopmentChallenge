@@ -18,6 +18,8 @@ namespace DevelopmentChallenge.Data.Classes
         {
             return ((decimal)Math.Sqrt(3) / 4) * _lado * _lado;
         }
+        public string Nombre { get => "Triangulo_Equilatero"; }
+        public string NombrePlural { get => "Triangulos_Equilateros"; }
 
         public decimal CalcularPerimetro()
         {

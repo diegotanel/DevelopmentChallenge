@@ -11,7 +11,18 @@ namespace DevelopmentChallenge.Data.Classes
     {
         static public void Main(String[] args)
         {
-            Console.WriteLine("Main Method");
+            Dictionary<int, string> map = new Dictionary<int, string>();
+            map.Add(FormaGeometrica.Castellano, "Castellano");
+            map.Add(FormaGeometrica.Ingles, "Ingles");
+            map.Add(FormaGeometrica.Italiano, "Italiano");
+            string valor = map.FirstOrDefault(pair => pair.Key == FormaGeometrica.Castellano).Value;
+            string valor2 = map.Where(p => p.Key == FormaGeometrica.Castellano).ToString();
+            if ("Castellano" == valor)
+            {
+                
+            }
+
+                Console.WriteLine("Main Method");
         }
     }
 

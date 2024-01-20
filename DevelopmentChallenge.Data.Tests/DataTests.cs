@@ -176,5 +176,33 @@ namespace DevelopmentChallenge.Data.Tests
             Assert.AreEqual("Circulo", rep.Formas("Circulo"));
         }
 
+        [TestCase]
+        public void TestObtenerNombreDeFormaTrianguloEquilateroEnItaliano()
+        {
+            Reporte rep = new Reporte("Italiano");
+            Assert.AreEqual("triangoli", rep.Formas("Triangulos_Equilateros"));
+        }
+
+        [TestCase]
+        public void TestObtenerListaVaciaEnCastellanoDesdeReporte()
+        {
+            Reporte rep = new Reporte("Castellano");
+            Assert.AreEqual("Lista vacía de formas!", rep.ListaVacia);
+        }
+
+        [TestCase]
+        public void TestObtenerAreaEnItalianoDesdeReporte()
+        {
+            Reporte rep = new Reporte("Italiano");
+            Assert.AreEqual("La zona", rep.Area);
+        }
+
+        [TestCase]
+        public void TestObtenerPerimetroEnInglesDesdeReporte()
+        {
+            Reporte rep = new Reporte("Ingles");
+            Assert.AreEqual("Perimeter", rep.Perimetro);
+        }
+
     }
 }

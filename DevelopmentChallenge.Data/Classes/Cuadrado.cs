@@ -13,6 +13,10 @@ namespace DevelopmentChallenge.Data.Classes
         {
             _lado = lado;
         }
+
+        public string Nombre { get => "Cuadrado"; }
+        public string NombrePlural { get => "Cuadrados"; }
+
         public decimal CalcularArea()
         {    
             return _lado * _lado;

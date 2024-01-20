@@ -8,6 +8,8 @@ namespace DevelopmentChallenge.Data.Classes
 {
     public interface IFormaGeometrica
     {
+        string Nombre { get; }
+        string NombrePlural { get; }
         decimal CalcularArea();
         decimal CalcularPerimetro();
     }

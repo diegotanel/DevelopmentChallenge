@@ -93,8 +93,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Castellano.xml" />
-    <Content Include="Classes\Castellano.xml" />
-    <Content Include="Classes\Italiano.xml" />
     <Content Include="Ingles.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

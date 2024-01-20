@@ -12,5 +12,6 @@ namespace DevelopmentChallenge.Data.Classes
         string Encabezado { get; }
         string Area { get; }
         string Perimetro { get; }
+        string Formas(string nombre);
     }
 }

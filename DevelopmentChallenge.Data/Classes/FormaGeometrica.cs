@@ -50,30 +50,28 @@ namespace DevelopmentChallenge.Data.Classes
 
         public static string Imprimir(List<FormaGeometrica> formas, int idioma)
         {
+            
+            Dictionary<int,string> map = new Dictionary<int,string>();
+            map.Add(FormaGeometrica.Castellano, "Castellano");
+            map.Add(FormaGeometrica.Ingles, "Ingles");
+            map.Add(FormaGeometrica.Italiano, "Italiano");
+            string language = map.FirstOrDefault(pair => pair.Key == idioma).Value;
 
+            Reporte reporte = new Reporte(language);
             var sb = new StringBuilder();
 
             if (!formas.Any())
             {
-                if (idioma == Castellano)
-                    sb.Append("<h1>Lista vacía de formas!</h1>");
-                if (idioma == Ingles)
-                    sb.Append("<h1>Empty list of shapes!</h1>");
-                if (idioma == Italiano)
-                    sb.Append("<h1>Elenco vuoto di forme!</h1>");
+                string listaVacia = "<h1>" + reporte.ListaVacia + "</h1>";
+                sb.Append(listaVacia);
             }
             else
             {
                 // Hay por lo menos una forma
                 // HEADER
-                if (idioma == Castellano)
-                    sb.Append("<h1>Reporte de Formas</h1>");
-                if (idioma == Ingles)
-                    // default es inglés
-                    sb.Append("<h1>Shapes report</h1>");
-                if (idioma == Italiano)
-                    sb.Append("<h1>Rapporto sui moduli</h1>");
-
+                string encabezado = "<h1>" + reporte.Encabezado + "</h1>";
+                sb.Append(encabezado);
+                
                 var numeroCuadrados = 0;
                 var numeroCirculos = 0;
                 var numeroTriangulos = 0;
