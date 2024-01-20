@@ -8,22 +8,16 @@ namespace DevelopmentChallenge.Data.Classes
 {
     public class Cuadrado : IFormaGeometrica
     {
-        private readonly decimal _lado;
-        public Cuadrado(decimal lado)
-        {
-            _lado = lado;
-        }
-
         public string Nombre { get => "Cuadrado"; }
         public string NombrePlural { get => "Cuadrados"; }
 
-        public decimal CalcularArea()
+        public decimal CalcularArea(decimal lado)
         {    
-            return _lado * _lado;
+            return lado * lado;
         }
-        public decimal CalcularPerimetro()
+        public decimal CalcularPerimetro(decimal lado)
         {
-            return _lado * 4;
+            return lado * 4;
         }
     }
 }

@@ -8,7 +8,7 @@
 	<etiqueta key="Triangulos_Equilateros" value="Triangulos"/>
 	<etiqueta key="ListaVacia" value="Lista vacía de formas!"/>
 	<etiqueta key="Encabezado" value="Reporte de Formas"/>
-	<etiqueta key="Formas" value="Formas"/>
+	<etiqueta key="Formas" value="formas"/>
 	<etiqueta key="Perimetro" value="Perimetro"/>
 	<etiqueta key="Area" value="Area"/>	
 </etiquetas>

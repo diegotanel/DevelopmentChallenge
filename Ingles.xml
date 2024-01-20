@@ -8,7 +8,7 @@
 	<etiqueta key="Triangulos_Equilateros" value="Triangles"/>
 	<etiqueta key="ListaVacia" value="Empty list of shapes!"/>
 	<etiqueta key="Encabezado" value="Shapes report"/>
-	<etiqueta key="Formas" value="Shapes"/>
+	<etiqueta key="Formas" value="shapes"/>
 	<etiqueta key="Perimetro" value="Perimeter"/>
 	<etiqueta key="Area" value="Area"/>	
 </etiquetas>

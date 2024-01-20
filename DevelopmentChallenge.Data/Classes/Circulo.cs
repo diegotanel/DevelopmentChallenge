@@ -9,23 +9,17 @@ namespace DevelopmentChallenge.Data.Classes
     public class Circulo : IFormaGeometrica
     {
 
-        private readonly decimal _lado;
-        public Circulo(decimal lado)
-        {
-            _lado = lado;
-        }
-
-        public string Nombre { get => "Circulo"; }
+         public string Nombre { get => "Circulo"; }
         public string NombrePlural { get => "Circulos"; }
 
-        public decimal CalcularArea()
+        public decimal CalcularArea(decimal lado)
         {
-            return (decimal)Math.PI * (_lado / 2) * (_lado / 2);
+            return (decimal)Math.PI * (lado / 2) * (lado / 2);
         }
 
-        public decimal CalcularPerimetro()
+        public decimal CalcularPerimetro(decimal lado)
         {
-            return (decimal)Math.PI* _lado;
+            return (decimal)Math.PI* lado;
         }
     }
 }

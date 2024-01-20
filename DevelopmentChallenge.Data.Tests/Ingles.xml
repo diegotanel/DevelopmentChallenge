@@ -4,11 +4,11 @@
 	<etiqueta key="Cuadrados" value="Squares"/>
 	<etiqueta key="Circulo" value="Circle"/>
 	<etiqueta key="Circulos" value="Circles"/>
-	<etiqueta key="Triangulo" value="Triangle"/>
-	<etiqueta key="Triangulos" value="Triangles"/>
+	<etiqueta key="Triangulo_Equilatero" value="Triangle"/>
+	<etiqueta key="Triangulos_Equilateros" value="Triangles"/>
 	<etiqueta key="ListaVacia" value="Empty list of shapes!"/>
 	<etiqueta key="Encabezado" value="Shapes report"/>
-	<etiqueta key="Formas" value="Shapes"/>
+	<etiqueta key="Formas" value="shapes"/>
 	<etiqueta key="Perimetro" value="Perimeter"/>
 	<etiqueta key="Area" value="Area"/>	
 </etiquetas>

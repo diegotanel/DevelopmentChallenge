@@ -15,36 +15,36 @@ namespace DevelopmentChallenge.Data.Tests
         [TestCase]
         public void TestCalcularAreaConUnCuadrado()
         {
-            Assert.AreEqual(25m, new Cuadrado(5).CalcularArea());
+            Assert.AreEqual(25m, new Cuadrado().CalcularArea(5));
         }
 
         [TestCase]
         public void TestCalcularPerimetroConUnCuadrado()
         {
-            Assert.AreEqual(20m, new Cuadrado(5).CalcularPerimetro());
+            Assert.AreEqual(20m, new Cuadrado().CalcularArea(5));
         }
 
         [TestCase]
         public void TestCalcularAreaConUnCirculo()
         {
-            Assert.AreEqual(3.14159265358979m, new Circulo(2).CalcularArea());
+            Assert.AreEqual(3.14159265358979m, new Circulo().CalcularArea(2));
         }
 
         [TestCase]
         public void TestCalcularPerimetroConUnCirculo()
         {
-            Assert.AreEqual(6.28318530717958m, new Circulo(2).CalcularPerimetro());
+            Assert.AreEqual(6.28318530717958m, new Circulo().CalcularPerimetro(2));
         }
 
         [TestCase]
         public void TestCalcularAreaConUnTrianguloEquilatero()
         {
-            Assert.AreEqual(10.8253175473055m, new TrianguloEquilatero(5).CalcularArea());
+            Assert.AreEqual(10.8253175473055m, new TrianguloEquilatero().CalcularArea(5));
         }
         [TestCase]
         public void TestCalcularPerimetroConUnTrianguloEquilatero()
         {
-            Assert.AreEqual(15m, new TrianguloEquilatero(5).CalcularPerimetro());
+            Assert.AreEqual(15m, new TrianguloEquilatero().CalcularPerimetro(5));
         }
 
         [TestCase]

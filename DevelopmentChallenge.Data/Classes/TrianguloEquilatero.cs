@@ -8,22 +8,16 @@ namespace DevelopmentChallenge.Data.Classes
 {
     public class TrianguloEquilatero : IFormaGeometrica
     {
-
-        private readonly decimal _lado;
-        public TrianguloEquilatero(decimal lado)
+        public decimal CalcularArea(decimal lado)
         {
-            _lado = lado;
-        }
-        public decimal CalcularArea()
-        {
-            return ((decimal)Math.Sqrt(3) / 4) * _lado * _lado;
+            return ((decimal)Math.Sqrt(3) / 4) * lado * lado;
         }
         public string Nombre { get => "Triangulo_Equilatero"; }
         public string NombrePlural { get => "Triangulos_Equilateros"; }
 
-        public decimal CalcularPerimetro()
+        public decimal CalcularPerimetro(decimal lado)
         {
-            return _lado * 3;
+            return lado * 3;
         }
     }
 }

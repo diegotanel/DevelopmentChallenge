@@ -10,7 +10,7 @@ namespace DevelopmentChallenge.Data.Classes
     {
         string Nombre { get; }
         string NombrePlural { get; }
-        decimal CalcularArea();
-        decimal CalcularPerimetro();
+        decimal CalcularArea(decimal lado);
+        decimal CalcularPerimetro(decimal lado);
     }
 }

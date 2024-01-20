@@ -10,6 +10,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Elementos de la solución", "Elementos de la solución", "{3D68A8A3-9E7B-4F9E-A764-A6BC566D5927}"
 	ProjectSection(SolutionItems) = preProject
 		DevelopmentChallenge.Data\Castellano.xml = DevelopmentChallenge.Data\Castellano.xml
+		DevelopmentChallenge.Data\Ingles.xml = DevelopmentChallenge.Data\Ingles.xml
 		DevelopmentChallenge.Data\Italiano.xml = DevelopmentChallenge.Data\Italiano.xml
 	EndProjectSection
 EndProject
