@@ -1,11 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2020
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34511.84
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevelopmentChallenge.Data", "DevelopmentChallenge.Data\DevelopmentChallenge.Data.csproj", "{B21A8F24-C7E0-4E69-B1D7-B424237DC216}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevelopmentChallenge.Data.Tests", "DevelopmentChallenge.Data.Tests\DevelopmentChallenge.Data.Tests.csproj", "{CAC2DC96-0AEF-48C0-A6E4-07EF206B860A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Elementos de la solución", "Elementos de la solución", "{3D68A8A3-9E7B-4F9E-A764-A6BC566D5927}"
+	ProjectSection(SolutionItems) = preProject
+		DevelopmentChallenge.Data\Castellano.xml = DevelopmentChallenge.Data\Castellano.xml
+		DevelopmentChallenge.Data\Italiano.xml = DevelopmentChallenge.Data\Italiano.xml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

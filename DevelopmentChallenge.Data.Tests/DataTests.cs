@@ -160,7 +160,21 @@ namespace DevelopmentChallenge.Data.Tests
         {
             Reporte rep = new Reporte("Ingles");
             Assert.AreEqual("Circle", rep.Formas("Circulo"));
-
         }
+
+        [TestCase]
+        public void TestObtenerNombreDeFormaEnItaliano()
+        {
+            Reporte rep = new Reporte("Italiano");
+            Assert.AreEqual("Cerchio", rep.Formas("Circulo"));
+        }
+
+        [TestCase]
+        public void TestObtenerNombreDeFormaEnCastellano()
+        {
+            Reporte rep = new Reporte("Castellano");
+            Assert.AreEqual("Circulo", rep.Formas("Circulo"));
+        }
+
     }
 }
