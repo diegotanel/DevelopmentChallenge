@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<etiquetas>
+	<etiqueta key="Cuadrado" value="Piazza"/>
+	<etiqueta key="Cuadrados" value="Piazze"/>
+	<etiqueta key="Circulo" value="Cerchio"/>
+	<etiqueta key="Circulos" value="Cerchi"/>
+	<etiqueta key="Triangulo" value="Triangolo"/>
+	<etiqueta key="Triangulos" value="triangoli"/>
+	<etiqueta key="ListaVacia" value="Elenco vuoto di forme!"/>
+	<etiqueta key="Encabezado" value="Rapporto sui moduli"/>
+	<etiqueta key="Formas" value="Forme"/>
+	<etiqueta key="Perimetro" value="Perimeter"/>
+	<etiqueta key="Area" value="La zona"/>	
+</etiquetas>

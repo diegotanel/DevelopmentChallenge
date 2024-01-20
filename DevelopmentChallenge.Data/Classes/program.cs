@@ -11,8 +11,6 @@ namespace DevelopmentChallenge.Data.Classes
     {
         static public void Main(String[] args)
         {
-            Reporte rep = new Reporte("Ingles");
-            string valor = rep.Formas("Circulo");
             Console.WriteLine("Main Method");
         }
     }

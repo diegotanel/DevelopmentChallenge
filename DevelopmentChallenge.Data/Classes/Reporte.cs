@@ -20,12 +20,14 @@ namespace DevelopmentChallenge.Data.Classes
             XmlDocument xml = new XmlDocument();
             xml.Load(string.Format("{0}.xml", idioma));
             xmlDoc = xml;
+            //adicionar código defensivo en caso que el idioma no este definido
         }
 
         public string Formas(string nombre)
         {
             XmlNode node = xmlDoc.SelectSingleNode(string.Format("/etiquetas/etiqueta[@key='{0}']", nombre));
             return node.Attributes["value"].Value;
+            //adicionar código defensivo en caso que no exista el valor asignado
         }
     }
 }
