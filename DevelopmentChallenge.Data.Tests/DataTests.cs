@@ -21,7 +21,7 @@ namespace DevelopmentChallenge.Data.Tests
         [TestCase]
         public void TestCalcularPerimetroConUnCuadrado()
         {
-            Assert.AreEqual(20m, new Cuadrado().CalcularArea(5));
+            Assert.AreEqual(20m, new Cuadrado().CalcularPerimetro(5));
         }
 
         [TestCase]
@@ -88,15 +88,15 @@ namespace DevelopmentChallenge.Data.Tests
             Assert.AreEqual("<h1>Shapes report</h1>1 Square | Area 25 | Perimeter 20 <br/>TOTAL:<br/>1 shapes Perimeter 20 Area 25", resumen);
         }
 
-        //[TestCase]
-        //public void TestResumenListaConUnCuadradoEnItaliano()
-        //{
-        //    var cuadrados = new List<FormaGeometrica> { new FormaGeometrica(FormaGeometrica.Cuadrado, 5) };
+        [TestCase]
+        public void TestResumenListaConUnCuadradoEnItaliano()
+        {
+            var cuadrados = new List<FormaGeometrica> { new FormaGeometrica(FormaGeometrica.Cuadrado, 5) };
 
-        //    var resumen = FormaGeometrica.Imprimir(cuadrados, FormaGeometrica.Italiano);
+            var resumen = FormaGeometrica.Imprimir(cuadrados, FormaGeometrica.Italiano);
 
-        //    Assert.AreEqual("<h1>Rapporto sui moduli</h1>1 Piazza | La zona 25 | Perimetro 20 <br/>TOTAL:<br/>1 perimetro delle forme 20 La zona 25", resumen);
-        //}
+            Assert.AreEqual("<h1>Rapporto sui moduli</h1>1 Piazza | La zona 25 | Perimetro 20 <br/>TOTAL:<br/>1 Forme Perimetro 20 La zona 25", resumen);
+        }
 
         [TestCase]
         public void TestResumenListaConMasCuadrados()
@@ -151,7 +151,7 @@ namespace DevelopmentChallenge.Data.Tests
             var resumen = FormaGeometrica.Imprimir(formas, FormaGeometrica.Castellano);
 
             Assert.AreEqual(
-                "<h1>Reporte de Formas</h1>2 Cuadrados | Area 29 | Perimetro 28 <br/>2 Círculos | Area 13,01 | Perimetro 18,06 <br/>3 Triángulos | Area 49,64 | Perimetro 51,6 <br/>TOTAL:<br/>7 formas Perimetro 97,66 Area 91,65",
+                "<h1>Reporte de Formas</h1>2 Cuadrados | Area 29 | Perimetro 28 <br/>2 Circulos | Area 13,01 | Perimetro 18,06 <br/>3 Triangulos | Area 49,64 | Perimetro 51,6 <br/>TOTAL:<br/>7 formas Perimetro 97,66 Area 91,65",
                 resumen);
         }
 
@@ -202,6 +202,13 @@ namespace DevelopmentChallenge.Data.Tests
         {
             Reporte rep = new Reporte("Ingles");
             Assert.AreEqual("Perimeter", rep.Perimetro);
+        }
+
+        [TestCase]
+        public void TestObtenerPerimetroEnItalianoDesdeReporte()
+        {
+            Reporte rep = new Reporte("Italiano");
+            Assert.AreEqual("Perimetro", rep.Perimetro);
         }
 
     }

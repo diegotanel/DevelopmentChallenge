@@ -114,7 +114,7 @@ namespace DevelopmentChallenge.Data.Classes
                 sb.Append("TOTAL:<br/>");
                 sb.Append(numeroCuadrados + numeroCirculos + numeroTriangulos + " " + reporte.Formas("Formas") + " ");
                 sb.Append(reporte.Formas("Perimetro") + " " + (perimetroCuadrados + perimetroTriangulos + perimetroCirculos).ToString("#.##") + " ");
-                sb.Append("Area " + (areaCuadrados + areaCirculos + areaTriangulos).ToString("#.##"));
+                sb.Append(reporte.Formas("Area") + " " + (areaCuadrados + areaCirculos + areaTriangulos).ToString("#.##"));
             }
 
             return sb.ToString();
@@ -131,17 +131,18 @@ namespace DevelopmentChallenge.Data.Classes
 
         private static string TraducirForma(int tipo, int cantidad, int idioma, Reporte reporte)
         {
+            IFormaGeometrica forma;
             switch (tipo)
             {
                 case Cuadrado:
-                    if (idioma == Castellano) return cantidad == 1 ? "Cuadrado" : "Cuadrados";
-                    else return cantidad == 1 ? "Square" : "Squares";
+                    forma = new Cuadrado();
+                    return cantidad == 1 ? reporte.Formas(forma.Nombre) : reporte.Formas(forma.NombrePlural);
                 case Circulo:
-                    if (idioma == Castellano) return cantidad == 1 ? "Círculo" : "Círculos";
-                    else return cantidad == 1 ? "Circle" : "Circles";
+                    forma = new Circulo();
+                    return cantidad == 1 ? reporte.Formas(forma.Nombre) : reporte.Formas(forma.NombrePlural);
                 case TrianguloEquilatero:
-                    if (idioma == Castellano) return cantidad == 1 ? "Triángulo" : "Triángulos";
-                    else return cantidad == 1 ? "Triangle" : "Triangles";
+                    forma = new TrianguloEquilatero();
+                    return cantidad == 1 ? reporte.Formas(forma.Nombre) : reporte.Formas(forma.NombrePlural);
             }
 
             return string.Empty;

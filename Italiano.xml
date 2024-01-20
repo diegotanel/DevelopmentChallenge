@@ -8,7 +8,7 @@
 	<etiqueta key="Triangulos_Equilateros" value="triangoli"/>
 	<etiqueta key="ListaVacia" value="Elenco vuoto di forme!"/>
 	<etiqueta key="Encabezado" value="Rapporto sui moduli"/>
-	<etiqueta key="Formas" value="forme"/>
-	<etiqueta key="Perimetro" value="Perimeter"/>
+	<etiqueta key="Formas" value="Forme"/>
+	<etiqueta key="Perimetro" value="Perimetro"/>
 	<etiqueta key="Area" value="La zona"/>	
 </etiquetas>
