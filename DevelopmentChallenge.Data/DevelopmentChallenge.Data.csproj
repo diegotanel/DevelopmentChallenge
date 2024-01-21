@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{B21A8F24-C7E0-4E69-B1D7-B424237DC216}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DevelopmentChallenge.Data</RootNamespace>
     <AssemblyName>DevelopmentChallenge.Data</AssemblyName>
@@ -72,7 +72,6 @@
     <Compile Include="Classes\Cuadrado.cs" />
     <Compile Include="Classes\FormaGeometrica.cs" />
     <Compile Include="Classes\IFigura.cs" />
-    <Compile Include="Classes\program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
