@@ -6,16 +6,20 @@ using System.Threading.Tasks;
 
 namespace DevelopmentChallenge.Data.Classes
 {
-    public class TrianguloEquilatero : IFormaGeometrica
+    public class TrianguloEquilatero : IFigura
     {
-        public decimal CalcularArea(decimal lado)
+        private decimal lado;
+        public TrianguloEquilatero(decimal lado)
         {
-            return ((decimal)Math.Sqrt(3) / 4) * lado * lado;
+            this.lado = lado;
         }
         public string Nombre { get => "Triangulo_Equilatero"; }
         public string NombrePlural { get => "Triangulos_Equilateros"; }
-
-        public decimal CalcularPerimetro(decimal lado)
+        public decimal CalcularArea()
+        {
+            return ((decimal)Math.Sqrt(3) / 4) * lado * lado;
+        }
+        public decimal CalcularPerimetro()
         {
             return lado * 3;
         }

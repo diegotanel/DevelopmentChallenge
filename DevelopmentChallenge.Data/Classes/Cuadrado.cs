@@ -6,16 +6,21 @@ using System.Threading.Tasks;
 
 namespace DevelopmentChallenge.Data.Classes
 {
-    public class Cuadrado : IFormaGeometrica
+    public class Cuadrado : IFigura
     {
+        private decimal lado;
+        public Cuadrado(decimal lado)
+        {
+            this.lado = lado;
+        }
         public string Nombre { get => "Cuadrado"; }
         public string NombrePlural { get => "Cuadrados"; }
 
-        public decimal CalcularArea(decimal lado)
-        {    
+        public decimal CalcularArea()
+        {
             return lado * lado;
         }
-        public decimal CalcularPerimetro(decimal lado)
+        public decimal CalcularPerimetro()
         {
             return lado * 4;
         }

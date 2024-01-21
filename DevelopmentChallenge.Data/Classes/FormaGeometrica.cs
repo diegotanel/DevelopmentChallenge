@@ -23,7 +23,6 @@ namespace DevelopmentChallenge.Data.Classes
 {
     public class FormaGeometrica
     {
-  
         #region Idiomas
 
         public const int Castellano = 1;
@@ -32,13 +31,11 @@ namespace DevelopmentChallenge.Data.Classes
 
         #endregion
 
-        private readonly decimal _lado;
-        public IFormaGeometrica Tipo { get; }
+        public IFigura Tipo { get; }
 
-        public FormaGeometrica(IFormaGeometrica tipo, decimal ancho)
+        public FormaGeometrica(IFigura tipo)
         {
             this.Tipo = tipo;
-            _lado = ancho;
         }
 
         public static string Imprimir(List<FormaGeometrica> formas, int idioma)
@@ -77,16 +74,12 @@ namespace DevelopmentChallenge.Data.Classes
                     if (dicForm.ContainsKey(key))
                     {
                         dfr = dicForm[key];
-                        dfr.cantidadDeElementos++;
-                        dfr.totalArea += forma.CalcularArea();
-                        dfr.totalPerimetro += forma.CalcularPerimetro();
+                        LlenarDatosFormaReporte(forma, dfr);
                         dicForm[key] = dfr;
                     }
                     else
                     {
-                        dfr.cantidadDeElementos++;
-                        dfr.totalArea += forma.CalcularArea();
-                        dfr.totalPerimetro += forma.CalcularPerimetro();
+                        LlenarDatosFormaReporte(forma, dfr);
                         dfr.fg = forma.Tipo;
                         dicForm.Add(key, dfr);
                     }                    
@@ -98,7 +91,7 @@ namespace DevelopmentChallenge.Data.Classes
                     int elementos = item.Value.cantidadDeElementos;
                     decimal area = item.Value.totalArea;
                     decimal perimetro = item.Value.totalPerimetro;
-                    IFormaGeometrica forma = item.Value.fg;
+                    IFigura forma = item.Value.fg;
                     sb.Append(ObtenerLinea(elementos, area, perimetro, forma, idioma, reporte));
                     cantidadTotalFormas += elementos;
                     cantidadTotalArea += area;
@@ -115,7 +108,14 @@ namespace DevelopmentChallenge.Data.Classes
             return sb.ToString();
         }
 
-        private static string ObtenerLinea(int cantidad, decimal area, decimal perimetro, IFormaGeometrica tipo, int idioma, Reporte reporte)
+        private static void LlenarDatosFormaReporte(FormaGeometrica forma, DatosFormaReporte dfr)
+        {
+            dfr.cantidadDeElementos++;
+            dfr.totalArea += forma.CalcularArea();
+            dfr.totalPerimetro += forma.CalcularPerimetro();
+        }
+
+        private static string ObtenerLinea(int cantidad, decimal area, decimal perimetro, IFigura tipo, int idioma, Reporte reporte)
         {
             if (cantidad > 0)
             {
@@ -124,19 +124,19 @@ namespace DevelopmentChallenge.Data.Classes
             return string.Empty;
         }
 
-        private static string TraducirForma(IFormaGeometrica tipo, int cantidad, int idioma, Reporte reporte)
+        private static string TraducirForma(IFigura tipo, int cantidad, int idioma, Reporte reporte)
         {
             return cantidad == 1 ? reporte.Formas(tipo.Nombre) : reporte.Formas(tipo.NombrePlural);
         }
 
         public decimal CalcularArea()
         {
-            return Tipo.CalcularArea(_lado);                    
+            return Tipo.CalcularArea();                    
         }
 
         public decimal CalcularPerimetro()
         {
-            return Tipo.CalcularPerimetro(_lado);
+            return Tipo.CalcularPerimetro();
         }
     }
 }

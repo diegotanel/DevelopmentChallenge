@@ -15,37 +15,49 @@ namespace DevelopmentChallenge.Data.Tests
         [TestCase]
         public void TestCalcularAreaConUnCuadrado()
         {
-            Assert.AreEqual(25m, new Cuadrado().CalcularArea(5));
+            Assert.AreEqual(25m, new Cuadrado(5).CalcularArea());
         }
 
         [TestCase]
         public void TestCalcularPerimetroConUnCuadrado()
         {
-            Assert.AreEqual(20m, new Cuadrado().CalcularPerimetro(5));
+            Assert.AreEqual(20m, new Cuadrado(5).CalcularPerimetro());
         }
 
         [TestCase]
         public void TestCalcularAreaConUnCirculo()
         {
-            Assert.AreEqual(3.14159265358979m, new Circulo().CalcularArea(2));
+            Assert.AreEqual(3.14159265358979m, new Circulo(2).CalcularArea());
         }
 
         [TestCase]
         public void TestCalcularPerimetroConUnCirculo()
         {
-            Assert.AreEqual(6.28318530717958m, new Circulo().CalcularPerimetro(2));
+            Assert.AreEqual(6.28318530717958m, new Circulo(2).CalcularPerimetro());
         }
 
         [TestCase]
         public void TestCalcularAreaConUnTrianguloEquilatero()
         {
-            Assert.AreEqual(10.8253175473055m, new TrianguloEquilatero().CalcularArea(5));
+            Assert.AreEqual(10.8253175473055m, new TrianguloEquilatero(5).CalcularArea());
         }
         [TestCase]
         public void TestCalcularPerimetroConUnTrianguloEquilatero()
         {
-            Assert.AreEqual(15m, new TrianguloEquilatero().CalcularPerimetro(5));
+            Assert.AreEqual(15m, new TrianguloEquilatero(5).CalcularPerimetro());
         }
+
+        //[TestCase]
+        //public void TestCalcularAreaConUnRectangulo()
+        //{
+        //    Assert.AreEqual(25m, new Rectangulo().CalcularArea(5));
+        //}
+
+        //[TestCase]
+        //public void TestCalcularPerimetroConUnRectangulo()
+        //{
+        //    Assert.AreEqual(20m, new Rectangulo().CalcularPerimetro(5));
+        //}
 
         [TestCase]
         public void TestResumenListaVacia()
@@ -71,7 +83,7 @@ namespace DevelopmentChallenge.Data.Tests
         [TestCase]
         public void TestResumenListaConUnCuadrado()
         {
-            var cuadrados = new List<FormaGeometrica> { new FormaGeometrica(new Cuadrado(), 5) };
+            var cuadrados = new List<FormaGeometrica> { new FormaGeometrica(new Cuadrado(5)) };
 
             var resumen = FormaGeometrica.Imprimir(cuadrados, FormaGeometrica.Castellano);
 
@@ -81,7 +93,7 @@ namespace DevelopmentChallenge.Data.Tests
         [TestCase]
         public void TestResumenListaConUnCuadradoEnIngles()
         {
-            var cuadrados = new List<FormaGeometrica> { new FormaGeometrica(new Cuadrado(), 5) };
+            var cuadrados = new List<FormaGeometrica> { new FormaGeometrica(new Cuadrado(5)) };
 
             var resumen = FormaGeometrica.Imprimir(cuadrados, FormaGeometrica.Ingles);
 
@@ -91,7 +103,7 @@ namespace DevelopmentChallenge.Data.Tests
         [TestCase]
         public void TestResumenListaConUnCuadradoEnItaliano()
         {
-            var cuadrados = new List<FormaGeometrica> { new FormaGeometrica(new Cuadrado(), 5) };
+            var cuadrados = new List<FormaGeometrica> { new FormaGeometrica(new Cuadrado(5)) };
 
             var resumen = FormaGeometrica.Imprimir(cuadrados, FormaGeometrica.Italiano);
 
@@ -103,9 +115,9 @@ namespace DevelopmentChallenge.Data.Tests
         {
             var cuadrados = new List<FormaGeometrica>
             {
-                new FormaGeometrica(new Cuadrado(), 5),
-                new FormaGeometrica(new Cuadrado(), 1),
-                new FormaGeometrica(new Cuadrado(), 3)
+                new FormaGeometrica(new Cuadrado(5)),
+                new FormaGeometrica(new Cuadrado(1)),
+                new FormaGeometrica(new Cuadrado(3))
             };
 
             var resumen = FormaGeometrica.Imprimir(cuadrados, FormaGeometrica.Ingles);
@@ -118,13 +130,13 @@ namespace DevelopmentChallenge.Data.Tests
         {
             var formas = new List<FormaGeometrica>
             {
-                new FormaGeometrica(new Cuadrado(), 5),
-                new FormaGeometrica(new Circulo(), 3),
-                new FormaGeometrica(new TrianguloEquilatero(), 4),
-                new FormaGeometrica(new Cuadrado(), 2),
-                new FormaGeometrica(new TrianguloEquilatero(), 9),
-                new FormaGeometrica(new Circulo(), 2.75m),
-                new FormaGeometrica(new TrianguloEquilatero(), 4.2m)
+                new FormaGeometrica(new Cuadrado(5)),
+                new FormaGeometrica(new Circulo(3)),
+                new FormaGeometrica(new TrianguloEquilatero(4)),
+                new FormaGeometrica(new Cuadrado(2)),
+                new FormaGeometrica(new TrianguloEquilatero(9)),
+                new FormaGeometrica(new Circulo(2.75m)),
+                new FormaGeometrica(new TrianguloEquilatero(4.2m))
             };
 
             var resumen = FormaGeometrica.Imprimir(formas, FormaGeometrica.Ingles);
@@ -139,13 +151,13 @@ namespace DevelopmentChallenge.Data.Tests
         {
             var formas = new List<FormaGeometrica>
             {
-                new FormaGeometrica(new Cuadrado(), 5),
-                new FormaGeometrica(new Circulo(), 3),
-                new FormaGeometrica(new TrianguloEquilatero(), 4),
-                new FormaGeometrica(new Cuadrado(), 2),
-                new FormaGeometrica(new TrianguloEquilatero(), 9),
-                new FormaGeometrica(new Circulo(), 2.75m),
-                new FormaGeometrica(new TrianguloEquilatero(), 4.2m)
+                new FormaGeometrica(new Cuadrado(5)),
+                new FormaGeometrica(new Circulo(3)),
+                new FormaGeometrica(new TrianguloEquilatero(4)),
+                new FormaGeometrica(new Cuadrado(2)),
+                new FormaGeometrica(new TrianguloEquilatero(9)),
+                new FormaGeometrica(new Circulo(2.75m)),
+                new FormaGeometrica(new TrianguloEquilatero(4.2m))
             };
 
             var resumen = FormaGeometrica.Imprimir(formas, FormaGeometrica.Castellano);

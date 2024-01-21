@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace DevelopmentChallenge.Data.Classes
 {
-    public interface IFormaGeometrica
+    public interface IFigura
     {
         string Nombre { get; }
         string NombrePlural { get; }
-        decimal CalcularArea(decimal lado);
-        decimal CalcularPerimetro(decimal lado);
+        decimal CalcularArea();
+        decimal CalcularPerimetro();
     }
 }

@@ -69,7 +69,7 @@
     <Compile Include="Classes\TrianguloEquilatero.cs" />
     <Compile Include="Classes\Cuadrado.cs" />
     <Compile Include="Classes\FormaGeometrica.cs" />
-    <Compile Include="Classes\IFormaGeometrica.cs" />
+    <Compile Include="Classes\IFigura.cs" />
     <Compile Include="Classes\program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
