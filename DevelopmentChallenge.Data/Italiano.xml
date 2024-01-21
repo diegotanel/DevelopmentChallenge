@@ -10,5 +10,7 @@
 	<etiqueta key="Encabezado" value="Rapporto sui moduli"/>
 	<etiqueta key="Formas" value="Forme"/>
 	<etiqueta key="Perimetro" value="Perimetro"/>
-	<etiqueta key="Area" value="La zona"/>	
+	<etiqueta key="Area" value="La zona"/>
+	<etiqueta key="Rectangulo" value="Rettangolo"/>
+	<etiqueta key="Rectangulos" value="Rettangoli"/>
 </etiquetas>

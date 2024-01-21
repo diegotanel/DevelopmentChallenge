@@ -47,17 +47,17 @@ namespace DevelopmentChallenge.Data.Tests
             Assert.AreEqual(15m, new TrianguloEquilatero(5).CalcularPerimetro());
         }
 
-        //[TestCase]
-        //public void TestCalcularAreaConUnRectangulo()
-        //{
-        //    Assert.AreEqual(25m, new Rectangulo().CalcularArea(5));
-        //}
+        [TestCase]
+        public void TestCalcularAreaConUnRectangulo()
+        {
+            Assert.AreEqual(8m, new Rectangulo(4,2).CalcularArea());
+        }
 
-        //[TestCase]
-        //public void TestCalcularPerimetroConUnRectangulo()
-        //{
-        //    Assert.AreEqual(20m, new Rectangulo().CalcularPerimetro(5));
-        //}
+        [TestCase]
+        public void TestCalcularPerimetroConUnRectangulo()
+        {
+            Assert.AreEqual(12m, new Rectangulo(4,2).CalcularPerimetro());
+        }
 
         [TestCase]
         public void TestResumenListaVacia()
@@ -98,6 +98,16 @@ namespace DevelopmentChallenge.Data.Tests
             var resumen = FormaGeometrica.Imprimir(cuadrados, FormaGeometrica.Ingles);
 
             Assert.AreEqual("<h1>Shapes report</h1>1 Square | Area 25 | Perimeter 20 <br/>TOTAL:<br/>1 shapes Perimeter 20 Area 25", resumen);
+        }
+
+        [TestCase]
+        public void TestResumenListaConRectanguloEnItaliano()
+        {
+            var cuadrados = new List<FormaGeometrica> { new FormaGeometrica(new Rectangulo(4,2)) };
+
+            var resumen = FormaGeometrica.Imprimir(cuadrados, FormaGeometrica.Italiano);
+
+            Assert.AreEqual("<h1>Rapporto sui moduli</h1>1 Rettangolo | La zona 8 | Perimetro 12 <br/>TOTAL:<br/>1 Forme Perimetro 12 La zona 8", resumen);
         }
 
         [TestCase]

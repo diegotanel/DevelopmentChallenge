@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Circulo.cs" />
+    <Compile Include="Classes\Rectangulo.cs" />
     <Compile Include="Classes\DatosFormaReporte.cs" />
     <Compile Include="Classes\Reporte.cs" />
     <Compile Include="Classes\IReporte.cs" />

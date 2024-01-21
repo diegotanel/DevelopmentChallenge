@@ -10,5 +10,7 @@
 	<etiqueta key="Encabezado" value="Shapes report"/>
 	<etiqueta key="Formas" value="shapes"/>
 	<etiqueta key="Perimetro" value="Perimeter"/>
-	<etiqueta key="Area" value="Area"/>	
+	<etiqueta key="Area" value="Area"/>
+	<etiqueta key="Rectangulo" value="Rectangle"/>
+	<etiqueta key="Rectangulos" value="Rectangles"/>
 </etiquetas>
