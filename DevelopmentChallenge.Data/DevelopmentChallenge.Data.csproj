@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Circulo.cs" />
+    <Compile Include="Classes\DatosFormaReporte.cs" />
     <Compile Include="Classes\Reporte.cs" />
     <Compile Include="Classes\IReporte.cs" />
     <Compile Include="Classes\TrianguloEquilatero.cs" />
@@ -92,7 +93,9 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Castellano.xml" />
+    <Content Include="Castellano.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Ingles.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

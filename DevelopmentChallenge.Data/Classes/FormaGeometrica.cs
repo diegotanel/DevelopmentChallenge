@@ -24,10 +24,11 @@ namespace DevelopmentChallenge.Data.Classes
     public class FormaGeometrica
     {
         #region Formas
-        public const int Cuadrado = 1;
-        public const int TrianguloEquilatero = 2;
-        public const int Circulo = 3;
-        public const int Trapecio = 4;
+
+        //public const int Cuadrado = 1;
+        //public const int TrianguloEquilatero = 2;
+        //public const int Circulo = 3;
+        //public const int Trapecio = 4;
 
         #endregion
 
@@ -40,11 +41,11 @@ namespace DevelopmentChallenge.Data.Classes
         #endregion
 
         private readonly decimal _lado;
-        public int Tipo { get; set; }
+        public IFormaGeometrica Tipo { get; }
 
-        public FormaGeometrica(int tipo, decimal ancho)
+        public FormaGeometrica(IFormaGeometrica tipo, decimal ancho)
         {
-            Tipo = tipo;
+            this.Tipo = tipo;
             _lado = ancho;
         }
 
@@ -71,7 +72,7 @@ namespace DevelopmentChallenge.Data.Classes
                 // HEADER
                 string encabezado = "<h1>" + reporte.Encabezado + "</h1>";
                 sb.Append(encabezado);
-                
+
                 var numeroCuadrados = 0;
                 var numeroCirculos = 0;
                 var numeroTriangulos = 0;
@@ -84,31 +85,83 @@ namespace DevelopmentChallenge.Data.Classes
                 var perimetroCirculos = 0m;
                 var perimetroTriangulos = 0m;
 
-                for (var i = 0; i < formas.Count; i++)
+                Dictionary<string,DatosFormaReporte> dicForm = new Dictionary<string, DatosFormaReporte>();
+                foreach (var forma in formas)
                 {
-                    if (formas[i].Tipo == Cuadrado)
+                    string key = forma.Tipo.Nombre;
+                    DatosFormaReporte dfr = new DatosFormaReporte();
+                    if (dicForm.ContainsKey(key))
                     {
-                        numeroCuadrados++;
-                        areaCuadrados += formas[i].CalcularArea();
-                        perimetroCuadrados += formas[i].CalcularPerimetro();
+                        dfr = dicForm[key];
+                        dfr.cantidadDeElementos++;
+                        dfr.totalArea += forma.CalcularArea();
+                        dfr.totalPerimetro += forma.CalcularPerimetro();
+                        dicForm[key] = dfr;
                     }
-                    if (formas[i].Tipo == Circulo)
+                    else
                     {
-                        numeroCirculos++;
-                        areaCirculos += formas[i].CalcularArea();
-                        perimetroCirculos += formas[i].CalcularPerimetro();
-                    }
-                    if (formas[i].Tipo == TrianguloEquilatero)
-                    {
-                        numeroTriangulos++;
-                        areaTriangulos += formas[i].CalcularArea();
-                        perimetroTriangulos += formas[i].CalcularPerimetro();
-                    }
+                        dfr.cantidadDeElementos++;
+                        dfr.totalArea += forma.CalcularArea();
+                        dfr.totalPerimetro += forma.CalcularPerimetro();
+                        dfr.fg = forma.Tipo;
+                        dicForm.Add(key, dfr);
+                    }                    
+
                 }
-                
-                sb.Append(ObtenerLinea(numeroCuadrados, areaCuadrados, perimetroCuadrados, Cuadrado, idioma, reporte));
-                sb.Append(ObtenerLinea(numeroCirculos, areaCirculos, perimetroCirculos, Circulo, idioma, reporte));
-                sb.Append(ObtenerLinea(numeroTriangulos, areaTriangulos, perimetroTriangulos, TrianguloEquilatero, idioma, reporte));
+
+
+                //for (var i = 0; i < formas.Count; i++)
+                //{
+                //    if (formas[i].Tipo.Nombre == "Cuadrado")
+                //    {
+                //        numeroCuadrados++;
+                //        areaCuadrados += formas[i].CalcularArea();
+                //        perimetroCuadrados += formas[i].CalcularPerimetro();
+                //        ObtenerLinea(numeroCuadrados, areaCuadrados, perimetroCuadrados, formas[i].Tipo, idioma, reporte);
+                //    }
+                //    if (formas[i].Tipo.Nombre == "Circulo")
+                //    {
+                //        numeroCirculos++;
+                //        areaCirculos += formas[i].CalcularArea();
+                //        perimetroCirculos += formas[i].CalcularPerimetro();
+                //    }
+                //    if (formas[i].Tipo.Nombre == "Triangulo_Equilatero")
+                //    {
+                //        numeroTriangulos++;
+                //        areaTriangulos += formas[i].CalcularArea();
+                //        perimetroTriangulos += formas[i].CalcularPerimetro();
+                //    }
+                //}
+                IFormaGeometrica cuadrado = new Cuadrado();
+                IFormaGeometrica circulo = new Circulo();
+                IFormaGeometrica trianguloEquilatero = new TrianguloEquilatero();
+                if (dicForm.ContainsKey("Cuadrado"))
+                {
+                    numeroCuadrados = dicForm["Cuadrado"].cantidadDeElementos;
+                    areaCuadrados = dicForm["Cuadrado"].totalArea;
+                    perimetroCuadrados = dicForm["Cuadrado"].totalPerimetro;
+                    cuadrado = dicForm["Cuadrado"].fg;
+                }
+
+                if (dicForm.ContainsKey("Circulo"))
+                {
+                    numeroCirculos = dicForm["Circulo"].cantidadDeElementos;
+                    areaCirculos = dicForm["Circulo"].totalArea;
+                    perimetroCirculos = dicForm["Circulo"].totalPerimetro;
+                    circulo = dicForm["Circulo"].fg;
+                }
+
+                if (dicForm.ContainsKey("Triangulo_Equilatero"))
+                {
+                    numeroTriangulos = dicForm["Triangulo_Equilatero"].cantidadDeElementos;
+                    areaTriangulos = dicForm["Triangulo_Equilatero"].totalArea;
+                    perimetroTriangulos = dicForm["Triangulo_Equilatero"].totalPerimetro;
+                    trianguloEquilatero = dicForm["Triangulo_Equilatero"].fg;
+                }
+
+                sb.Append(ObtenerLinea(numeroCuadrados, areaCuadrados, perimetroCuadrados, cuadrado , idioma, reporte)) ;
+                sb.Append(ObtenerLinea(numeroCirculos, areaCirculos, perimetroCirculos, circulo, idioma, reporte));
+                sb.Append(ObtenerLinea(numeroTriangulos, areaTriangulos, perimetroTriangulos, trianguloEquilatero, idioma, reporte));
 
                 // FOOTER
                 sb.Append("TOTAL:<br/>");
@@ -120,7 +173,7 @@ namespace DevelopmentChallenge.Data.Classes
             return sb.ToString();
         }
 
-        private static string ObtenerLinea(int cantidad, decimal area, decimal perimetro, int tipo, int idioma, Reporte reporte)
+        private static string ObtenerLinea(int cantidad, decimal area, decimal perimetro, IFormaGeometrica tipo, int idioma, Reporte reporte)
         {
             if (cantidad > 0)
             {
@@ -129,20 +182,17 @@ namespace DevelopmentChallenge.Data.Classes
             return string.Empty;
         }
 
-        private static string TraducirForma(int tipo, int cantidad, int idioma, Reporte reporte)
+        private static string TraducirForma(IFormaGeometrica tipo, int cantidad, int idioma, Reporte reporte)
         {
-            IFormaGeometrica forma;
-            switch (tipo)
+
+            switch (tipo.Nombre)
             {
-                case Cuadrado:
-                    forma = new Cuadrado();
-                    return cantidad == 1 ? reporte.Formas(forma.Nombre) : reporte.Formas(forma.NombrePlural);
-                case Circulo:
-                    forma = new Circulo();
-                    return cantidad == 1 ? reporte.Formas(forma.Nombre) : reporte.Formas(forma.NombrePlural);
-                case TrianguloEquilatero:
-                    forma = new TrianguloEquilatero();
-                    return cantidad == 1 ? reporte.Formas(forma.Nombre) : reporte.Formas(forma.NombrePlural);
+                case "Cuadrado":
+                    return cantidad == 1 ? reporte.Formas(tipo.Nombre) : reporte.Formas(tipo.NombrePlural);
+                case "Circulo":
+                    return cantidad == 1 ? reporte.Formas(tipo.Nombre) : reporte.Formas(tipo.NombrePlural);
+                case "Triangulo_Equilatero":
+                    return cantidad == 1 ? reporte.Formas(tipo.Nombre) : reporte.Formas(tipo.NombrePlural);
             }
 
             return string.Empty;
@@ -150,26 +200,56 @@ namespace DevelopmentChallenge.Data.Classes
 
         public decimal CalcularArea()
         {
-            switch (Tipo)
+  
+            if (Tipo.Nombre == "Cuadrado")
             {
-                case Cuadrado: return new Cuadrado().CalcularArea(_lado);
-                case Circulo: return new Circulo().CalcularArea(_lado);
-                case TrianguloEquilatero: return new TrianguloEquilatero().CalcularArea(_lado);
-                default:
-                    throw new ArgumentOutOfRangeException(@"Forma desconocida");
+                return new Cuadrado().CalcularArea(_lado);
             }
+            if (Tipo.Nombre == "Circulo") 
+            {
+                return new Circulo().CalcularArea(_lado);
+            }
+            if (Tipo.Nombre == "Triangulo_Equilatero")
+            {
+                return new TrianguloEquilatero().CalcularArea(_lado);
+            }
+            else
+            {
+                throw new ArgumentOutOfRangeException(@"Forma desconocida");
+            }
+    
+//                case Cuadrado: return new Cuadrado().CalcularArea(_lado);
+//                case Circulo: return new Circulo().CalcularArea(_lado);
+//                case TrianguloEquilatero: return new TrianguloEquilatero().CalcularArea(_lado);
+                    
         }
 
         public decimal CalcularPerimetro()
         {
-            switch (Tipo)
+            if (Tipo.Nombre == "Cuadrado")
             {
-                case Cuadrado: return new Cuadrado().CalcularPerimetro(_lado);
-                case Circulo: return new Circulo().CalcularPerimetro(_lado);
-                case TrianguloEquilatero: return new TrianguloEquilatero().CalcularPerimetro(_lado);
-                default:
-                    throw new ArgumentOutOfRangeException(@"Forma desconocida");
+                return new Cuadrado().CalcularPerimetro(_lado);
             }
+            if (Tipo.Nombre == "Circulo")
+            {
+                return new Circulo().CalcularPerimetro(_lado);
+            }
+            if (Tipo.Nombre == "Triangulo_Equilatero")
+            {
+                return new TrianguloEquilatero().CalcularPerimetro(_lado);
+            }
+            else
+            {
+                throw new ArgumentOutOfRangeException(@"Forma desconocida");
+            }
+            //switch (Tipo)
+            //{
+            //    case Cuadrado: return new Cuadrado().CalcularPerimetro(_lado);
+            //    case Circulo: return new Circulo().CalcularPerimetro(_lado);
+            //    case TrianguloEquilatero: return new TrianguloEquilatero().CalcularPerimetro(_lado);
+            //    default:
+            //        throw new ArgumentOutOfRangeException(@"Forma desconocida");
+            //}
         }
     }
 }

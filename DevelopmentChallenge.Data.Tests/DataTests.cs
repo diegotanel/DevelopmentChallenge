@@ -71,7 +71,7 @@ namespace DevelopmentChallenge.Data.Tests
         [TestCase]
         public void TestResumenListaConUnCuadrado()
         {
-            var cuadrados = new List<FormaGeometrica> { new FormaGeometrica(FormaGeometrica.Cuadrado, 5) };
+            var cuadrados = new List<FormaGeometrica> { new FormaGeometrica(new Cuadrado(), 5) };
 
             var resumen = FormaGeometrica.Imprimir(cuadrados, FormaGeometrica.Castellano);
 
@@ -81,7 +81,7 @@ namespace DevelopmentChallenge.Data.Tests
         [TestCase]
         public void TestResumenListaConUnCuadradoEnIngles()
         {
-            var cuadrados = new List<FormaGeometrica> { new FormaGeometrica(FormaGeometrica.Cuadrado, 5) };
+            var cuadrados = new List<FormaGeometrica> { new FormaGeometrica(new Cuadrado(), 5) };
 
             var resumen = FormaGeometrica.Imprimir(cuadrados, FormaGeometrica.Ingles);
 
@@ -91,7 +91,7 @@ namespace DevelopmentChallenge.Data.Tests
         [TestCase]
         public void TestResumenListaConUnCuadradoEnItaliano()
         {
-            var cuadrados = new List<FormaGeometrica> { new FormaGeometrica(FormaGeometrica.Cuadrado, 5) };
+            var cuadrados = new List<FormaGeometrica> { new FormaGeometrica(new Cuadrado(), 5) };
 
             var resumen = FormaGeometrica.Imprimir(cuadrados, FormaGeometrica.Italiano);
 
@@ -103,9 +103,9 @@ namespace DevelopmentChallenge.Data.Tests
         {
             var cuadrados = new List<FormaGeometrica>
             {
-                new FormaGeometrica(FormaGeometrica.Cuadrado, 5),
-                new FormaGeometrica(FormaGeometrica.Cuadrado, 1),
-                new FormaGeometrica(FormaGeometrica.Cuadrado, 3)
+                new FormaGeometrica(new Cuadrado(), 5),
+                new FormaGeometrica(new Cuadrado(), 1),
+                new FormaGeometrica(new Cuadrado(), 3)
             };
 
             var resumen = FormaGeometrica.Imprimir(cuadrados, FormaGeometrica.Ingles);
@@ -118,13 +118,13 @@ namespace DevelopmentChallenge.Data.Tests
         {
             var formas = new List<FormaGeometrica>
             {
-                new FormaGeometrica(FormaGeometrica.Cuadrado, 5),
-                new FormaGeometrica(FormaGeometrica.Circulo, 3),
-                new FormaGeometrica(FormaGeometrica.TrianguloEquilatero, 4),
-                new FormaGeometrica(FormaGeometrica.Cuadrado, 2),
-                new FormaGeometrica(FormaGeometrica.TrianguloEquilatero, 9),
-                new FormaGeometrica(FormaGeometrica.Circulo, 2.75m),
-                new FormaGeometrica(FormaGeometrica.TrianguloEquilatero, 4.2m)
+                new FormaGeometrica(new Cuadrado(), 5),
+                new FormaGeometrica(new Circulo(), 3),
+                new FormaGeometrica(new TrianguloEquilatero(), 4),
+                new FormaGeometrica(new Cuadrado(), 2),
+                new FormaGeometrica(new TrianguloEquilatero(), 9),
+                new FormaGeometrica(new Circulo(), 2.75m),
+                new FormaGeometrica(new TrianguloEquilatero(), 4.2m)
             };
 
             var resumen = FormaGeometrica.Imprimir(formas, FormaGeometrica.Ingles);
@@ -139,13 +139,13 @@ namespace DevelopmentChallenge.Data.Tests
         {
             var formas = new List<FormaGeometrica>
             {
-                new FormaGeometrica(FormaGeometrica.Cuadrado, 5),
-                new FormaGeometrica(FormaGeometrica.Circulo, 3),
-                new FormaGeometrica(FormaGeometrica.TrianguloEquilatero, 4),
-                new FormaGeometrica(FormaGeometrica.Cuadrado, 2),
-                new FormaGeometrica(FormaGeometrica.TrianguloEquilatero, 9),
-                new FormaGeometrica(FormaGeometrica.Circulo, 2.75m),
-                new FormaGeometrica(FormaGeometrica.TrianguloEquilatero, 4.2m)
+                new FormaGeometrica(new Cuadrado(), 5),
+                new FormaGeometrica(new Circulo(), 3),
+                new FormaGeometrica(new TrianguloEquilatero(), 4),
+                new FormaGeometrica(new Cuadrado(), 2),
+                new FormaGeometrica(new TrianguloEquilatero(), 9),
+                new FormaGeometrica(new Circulo(), 2.75m),
+                new FormaGeometrica(new TrianguloEquilatero(), 4.2m)
             };
 
             var resumen = FormaGeometrica.Imprimir(formas, FormaGeometrica.Castellano);
