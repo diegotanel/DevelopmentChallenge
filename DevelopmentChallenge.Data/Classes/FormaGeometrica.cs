@@ -184,72 +184,17 @@ namespace DevelopmentChallenge.Data.Classes
 
         private static string TraducirForma(IFormaGeometrica tipo, int cantidad, int idioma, Reporte reporte)
         {
-
-            switch (tipo.Nombre)
-            {
-                case "Cuadrado":
-                    return cantidad == 1 ? reporte.Formas(tipo.Nombre) : reporte.Formas(tipo.NombrePlural);
-                case "Circulo":
-                    return cantidad == 1 ? reporte.Formas(tipo.Nombre) : reporte.Formas(tipo.NombrePlural);
-                case "Triangulo_Equilatero":
-                    return cantidad == 1 ? reporte.Formas(tipo.Nombre) : reporte.Formas(tipo.NombrePlural);
-            }
-
-            return string.Empty;
+            return cantidad == 1 ? reporte.Formas(tipo.Nombre) : reporte.Formas(tipo.NombrePlural);
         }
 
         public decimal CalcularArea()
         {
-  
-            if (Tipo.Nombre == "Cuadrado")
-            {
-                return new Cuadrado().CalcularArea(_lado);
-            }
-            if (Tipo.Nombre == "Circulo") 
-            {
-                return new Circulo().CalcularArea(_lado);
-            }
-            if (Tipo.Nombre == "Triangulo_Equilatero")
-            {
-                return new TrianguloEquilatero().CalcularArea(_lado);
-            }
-            else
-            {
-                throw new ArgumentOutOfRangeException(@"Forma desconocida");
-            }
-    
-//                case Cuadrado: return new Cuadrado().CalcularArea(_lado);
-//                case Circulo: return new Circulo().CalcularArea(_lado);
-//                case TrianguloEquilatero: return new TrianguloEquilatero().CalcularArea(_lado);
-                    
+            return Tipo.CalcularArea(_lado);                    
         }
 
         public decimal CalcularPerimetro()
         {
-            if (Tipo.Nombre == "Cuadrado")
-            {
-                return new Cuadrado().CalcularPerimetro(_lado);
-            }
-            if (Tipo.Nombre == "Circulo")
-            {
-                return new Circulo().CalcularPerimetro(_lado);
-            }
-            if (Tipo.Nombre == "Triangulo_Equilatero")
-            {
-                return new TrianguloEquilatero().CalcularPerimetro(_lado);
-            }
-            else
-            {
-                throw new ArgumentOutOfRangeException(@"Forma desconocida");
-            }
-            //switch (Tipo)
-            //{
-            //    case Cuadrado: return new Cuadrado().CalcularPerimetro(_lado);
-            //    case Circulo: return new Circulo().CalcularPerimetro(_lado);
-            //    case TrianguloEquilatero: return new TrianguloEquilatero().CalcularPerimetro(_lado);
-            //    default:
-            //        throw new ArgumentOutOfRangeException(@"Forma desconocida");
-            //}
+            return Tipo.CalcularPerimetro(_lado);
         }
     }
 }
