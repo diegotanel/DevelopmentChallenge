@@ -23,15 +23,7 @@ namespace DevelopmentChallenge.Data.Classes
 {
     public class FormaGeometrica
     {
-        #region Formas
-
-        //public const int Cuadrado = 1;
-        //public const int TrianguloEquilatero = 2;
-        //public const int Circulo = 3;
-        //public const int Trapecio = 4;
-
-        #endregion
-
+  
         #region Idiomas
 
         public const int Castellano = 1;
@@ -73,17 +65,9 @@ namespace DevelopmentChallenge.Data.Classes
                 string encabezado = "<h1>" + reporte.Encabezado + "</h1>";
                 sb.Append(encabezado);
 
-                var numeroCuadrados = 0;
-                var numeroCirculos = 0;
-                var numeroTriangulos = 0;
-
-                var areaCuadrados = 0m;
-                var areaCirculos = 0m;
-                var areaTriangulos = 0m;
-
-                var perimetroCuadrados = 0m;
-                var perimetroCirculos = 0m;
-                var perimetroTriangulos = 0m;
+                int cantidadTotalFormas = 0;
+                decimal cantidadTotalArea = 0m;
+                decimal cantidadTotalPerimetro = 0m;
 
                 Dictionary<string,DatosFormaReporte> dicForm = new Dictionary<string, DatosFormaReporte>();
                 foreach (var forma in formas)
@@ -109,33 +93,6 @@ namespace DevelopmentChallenge.Data.Classes
 
                 }
 
-                IFormaGeometrica cuadrado = new Cuadrado();
-                IFormaGeometrica circulo = new Circulo();
-                IFormaGeometrica trianguloEquilatero = new TrianguloEquilatero();
-                if (dicForm.ContainsKey("Cuadrado"))
-                {
-                    numeroCuadrados = dicForm["Cuadrado"].cantidadDeElementos;
-                    areaCuadrados = dicForm["Cuadrado"].totalArea;
-                    perimetroCuadrados = dicForm["Cuadrado"].totalPerimetro;
-                    cuadrado = dicForm["Cuadrado"].fg;
-                }
-
-                if (dicForm.ContainsKey("Circulo"))
-                {
-                    numeroCirculos = dicForm["Circulo"].cantidadDeElementos;
-                    areaCirculos = dicForm["Circulo"].totalArea;
-                    perimetroCirculos = dicForm["Circulo"].totalPerimetro;
-                    circulo = dicForm["Circulo"].fg;
-                }
-
-                if (dicForm.ContainsKey("Triangulo_Equilatero"))
-                {
-                    numeroTriangulos = dicForm["Triangulo_Equilatero"].cantidadDeElementos;
-                    areaTriangulos = dicForm["Triangulo_Equilatero"].totalArea;
-                    perimetroTriangulos = dicForm["Triangulo_Equilatero"].totalPerimetro;
-                    trianguloEquilatero = dicForm["Triangulo_Equilatero"].fg;
-                }
-
                 foreach (var item in dicForm)
                 {
                     int elementos = item.Value.cantidadDeElementos;
@@ -143,13 +100,16 @@ namespace DevelopmentChallenge.Data.Classes
                     decimal perimetro = item.Value.totalPerimetro;
                     IFormaGeometrica forma = item.Value.fg;
                     sb.Append(ObtenerLinea(elementos, area, perimetro, forma, idioma, reporte));
+                    cantidadTotalFormas += elementos;
+                    cantidadTotalArea += area;
+                    cantidadTotalPerimetro += perimetro;
                 }
 
                 // FOOTER
                 sb.Append("TOTAL:<br/>");
-                sb.Append(numeroCuadrados + numeroCirculos + numeroTriangulos + " " + reporte.Formas("Formas") + " ");
-                sb.Append(reporte.Formas("Perimetro") + " " + (perimetroCuadrados + perimetroTriangulos + perimetroCirculos).ToString("#.##") + " ");
-                sb.Append(reporte.Formas("Area") + " " + (areaCuadrados + areaCirculos + areaTriangulos).ToString("#.##"));
+                sb.Append(cantidadTotalFormas + " " + reporte.Formas("Formas") + " ");
+                sb.Append(reporte.Formas("Perimetro") + " " + (cantidadTotalPerimetro).ToString("#.##") + " ");
+                sb.Append(reporte.Formas("Area") + " " + (cantidadTotalArea).ToString("#.##"));
             }
 
             return sb.ToString();
