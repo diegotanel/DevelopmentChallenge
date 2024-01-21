@@ -63,10 +63,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Circulo.cs" />
+    <Compile Include="Classes\Idioma.cs" />
     <Compile Include="Classes\Rectangulo.cs" />
     <Compile Include="Classes\DatosFormaReporte.cs" />
-    <Compile Include="Classes\Reporte.cs" />
-    <Compile Include="Classes\IReporte.cs" />
+    <Compile Include="Classes\IdiomaXMLHelper.cs" />
+    <Compile Include="Classes\IIdiomaHelper.cs" />
     <Compile Include="Classes\TrianguloEquilatero.cs" />
     <Compile Include="Classes\Cuadrado.cs" />
     <Compile Include="Classes\FormaGeometrica.cs" />

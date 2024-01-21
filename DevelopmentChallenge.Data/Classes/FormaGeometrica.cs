@@ -23,14 +23,6 @@ namespace DevelopmentChallenge.Data.Classes
 {
     public class FormaGeometrica
     {
-        #region Idiomas
-
-        public const int Castellano = 1;
-        public const int Ingles = 2;
-        public const int Italiano = 3;
-
-        #endregion
-
         public IFigura Tipo { get; }
 
         public FormaGeometrica(IFigura tipo)
@@ -38,35 +30,27 @@ namespace DevelopmentChallenge.Data.Classes
             this.Tipo = tipo;
         }
 
-        public static string Imprimir(List<FormaGeometrica> formas, int idioma)
+        public static string Imprimir(List<FormaGeometrica> formas, IIdiomaHelper idiomaHelper)
         {
-            
-            Dictionary<int,string> map = new Dictionary<int,string>();
-            map.Add(FormaGeometrica.Castellano, "Castellano");
-            map.Add(FormaGeometrica.Ingles, "Ingles");
-            map.Add(FormaGeometrica.Italiano, "Italiano");
-            string language = map.FirstOrDefault(pair => pair.Key == idioma).Value;
-
-            Reporte reporte = new Reporte(language);
             var sb = new StringBuilder();
 
             if (!formas.Any())
             {
-                string listaVacia = "<h1>" + reporte.ListaVacia + "</h1>";
+                string listaVacia = "<h1>" + idiomaHelper.ListaVacia + "</h1>";
                 sb.Append(listaVacia);
             }
             else
             {
                 // Hay por lo menos una forma
                 // HEADER
-                string encabezado = "<h1>" + reporte.Encabezado + "</h1>";
+                string encabezado = "<h1>" + idiomaHelper.Encabezado + "</h1>";
                 sb.Append(encabezado);
 
                 int cantidadTotalFormas = 0;
                 decimal cantidadTotalArea = 0m;
                 decimal cantidadTotalPerimetro = 0m;
 
-                Dictionary<string,DatosFormaReporte> dicForm = new Dictionary<string, DatosFormaReporte>();
+                Dictionary<string, DatosFormaReporte> dicForm = new Dictionary<string, DatosFormaReporte>();
                 foreach (var forma in formas)
                 {
                     string key = forma.Tipo.Nombre;
@@ -82,7 +66,7 @@ namespace DevelopmentChallenge.Data.Classes
                         LlenarDatosFormaReporte(forma, dfr);
                         dfr.fg = forma.Tipo;
                         dicForm.Add(key, dfr);
-                    }                    
+                    }
 
                 }
 
@@ -92,7 +76,7 @@ namespace DevelopmentChallenge.Data.Classes
                     decimal area = item.Value.totalArea;
                     decimal perimetro = item.Value.totalPerimetro;
                     IFigura forma = item.Value.fg;
-                    sb.Append(ObtenerLinea(elementos, area, perimetro, forma, idioma, reporte));
+                    sb.Append(ObtenerLinea(elementos, area, perimetro, forma, idiomaHelper));
                     cantidadTotalFormas += elementos;
                     cantidadTotalArea += area;
                     cantidadTotalPerimetro += perimetro;
@@ -100,9 +84,9 @@ namespace DevelopmentChallenge.Data.Classes
 
                 // FOOTER
                 sb.Append("TOTAL:<br/>");
-                sb.Append(cantidadTotalFormas + " " + reporte.Formas("Formas") + " ");
-                sb.Append(reporte.Formas("Perimetro") + " " + (cantidadTotalPerimetro).ToString("#.##") + " ");
-                sb.Append(reporte.Formas("Area") + " " + (cantidadTotalArea).ToString("#.##"));
+                sb.Append(cantidadTotalFormas + " " + idiomaHelper.Formas("Formas") + " ");
+                sb.Append(idiomaHelper.Formas("Perimetro") + " " + (cantidadTotalPerimetro).ToString("#.##") + " ");
+                sb.Append(idiomaHelper.Formas("Area") + " " + (cantidadTotalArea).ToString("#.##"));
             }
 
             return sb.ToString();
@@ -115,23 +99,23 @@ namespace DevelopmentChallenge.Data.Classes
             dfr.totalPerimetro += forma.CalcularPerimetro();
         }
 
-        private static string ObtenerLinea(int cantidad, decimal area, decimal perimetro, IFigura tipo, int idioma, Reporte reporte)
+        private static string ObtenerLinea(int cantidad, decimal area, decimal perimetro, IFigura tipo, IIdiomaHelper idiomaHelper)
         {
             if (cantidad > 0)
             {
-                return $"{cantidad} {TraducirForma(tipo, cantidad, idioma, reporte)} | {reporte.Area} {area:#.##} | {reporte.Perimetro} {perimetro:#.##} <br/>";
+                return $"{cantidad} {TraducirForma(tipo, cantidad, idiomaHelper)} | {idiomaHelper.Area} {area:#.##} | {idiomaHelper.Perimetro} {perimetro:#.##} <br/>";
             }
             return string.Empty;
         }
 
-        private static string TraducirForma(IFigura tipo, int cantidad, int idioma, Reporte reporte)
+        private static string TraducirForma(IFigura tipo, int cantidad, IIdiomaHelper idiomaHelper)
         {
-            return cantidad == 1 ? reporte.Formas(tipo.Nombre) : reporte.Formas(tipo.NombrePlural);
+            return cantidad == 1 ? idiomaHelper.Formas(tipo.Nombre) : idiomaHelper.Formas(tipo.NombrePlural);
         }
 
         public decimal CalcularArea()
         {
-            return Tipo.CalcularArea();                    
+            return Tipo.CalcularArea();
         }
 
         public decimal CalcularPerimetro()

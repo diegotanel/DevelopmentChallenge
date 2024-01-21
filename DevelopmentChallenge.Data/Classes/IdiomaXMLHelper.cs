@@ -11,11 +11,11 @@ using System.IO;
 
 namespace DevelopmentChallenge.Data.Classes
 {
-    public class Reporte : IReporte
+    public class IdiomaXMLHelper : IIdiomaHelper
     {
         private XmlDocument xmlDoc;
 
-        public Reporte(string idioma)
+        public IdiomaXMLHelper(string idioma)
         {
             XmlDocument xml = new XmlDocument();
             xml.Load(string.Format("{0}.xml", idioma));

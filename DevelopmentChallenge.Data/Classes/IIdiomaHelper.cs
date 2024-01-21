@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DevelopmentChallenge.Data.Classes
 {
-    public interface IReporte
+    public interface IIdiomaHelper
     {
         string ListaVacia { get; }
         string Encabezado { get; }
