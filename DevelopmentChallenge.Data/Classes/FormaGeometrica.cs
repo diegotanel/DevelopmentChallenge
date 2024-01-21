@@ -109,29 +109,6 @@ namespace DevelopmentChallenge.Data.Classes
 
                 }
 
-
-                //for (var i = 0; i < formas.Count; i++)
-                //{
-                //    if (formas[i].Tipo.Nombre == "Cuadrado")
-                //    {
-                //        numeroCuadrados++;
-                //        areaCuadrados += formas[i].CalcularArea();
-                //        perimetroCuadrados += formas[i].CalcularPerimetro();
-                //        ObtenerLinea(numeroCuadrados, areaCuadrados, perimetroCuadrados, formas[i].Tipo, idioma, reporte);
-                //    }
-                //    if (formas[i].Tipo.Nombre == "Circulo")
-                //    {
-                //        numeroCirculos++;
-                //        areaCirculos += formas[i].CalcularArea();
-                //        perimetroCirculos += formas[i].CalcularPerimetro();
-                //    }
-                //    if (formas[i].Tipo.Nombre == "Triangulo_Equilatero")
-                //    {
-                //        numeroTriangulos++;
-                //        areaTriangulos += formas[i].CalcularArea();
-                //        perimetroTriangulos += formas[i].CalcularPerimetro();
-                //    }
-                //}
                 IFormaGeometrica cuadrado = new Cuadrado();
                 IFormaGeometrica circulo = new Circulo();
                 IFormaGeometrica trianguloEquilatero = new TrianguloEquilatero();
@@ -159,9 +136,14 @@ namespace DevelopmentChallenge.Data.Classes
                     trianguloEquilatero = dicForm["Triangulo_Equilatero"].fg;
                 }
 
-                sb.Append(ObtenerLinea(numeroCuadrados, areaCuadrados, perimetroCuadrados, cuadrado , idioma, reporte)) ;
-                sb.Append(ObtenerLinea(numeroCirculos, areaCirculos, perimetroCirculos, circulo, idioma, reporte));
-                sb.Append(ObtenerLinea(numeroTriangulos, areaTriangulos, perimetroTriangulos, trianguloEquilatero, idioma, reporte));
+                foreach (var item in dicForm)
+                {
+                    int elementos = item.Value.cantidadDeElementos;
+                    decimal area = item.Value.totalArea;
+                    decimal perimetro = item.Value.totalPerimetro;
+                    IFormaGeometrica forma = item.Value.fg;
+                    sb.Append(ObtenerLinea(elementos, area, perimetro, forma, idioma, reporte));
+                }
 
                 // FOOTER
                 sb.Append("TOTAL:<br/>");
